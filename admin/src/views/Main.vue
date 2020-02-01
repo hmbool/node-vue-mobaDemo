@@ -16,9 +16,14 @@
                         <el-menu-item index="/items/create">新建物品</el-menu-item>
                         <el-menu-item index="/items/list">物品列表</el-menu-item>
                     </el-menu-item-group>
+                    <el-menu-item-group>
+                        <template slot="title">英雄</template>
+                        <el-menu-item index="/heroes/create">新建英雄</el-menu-item>
+                        <el-menu-item index="/heroes/list">英雄列表</el-menu-item>
+                    </el-menu-item-group>
                     
                 </el-submenu>
-                <el-submenu index="2">
+                <!-- <el-submenu index="2">
                     <template slot="title">
                         <i class="el-icon-menu"></i>导航二
                     </template>
@@ -29,7 +34,7 @@
                         <i class="el-icon-setting"></i>导航三
                     </template>
                     
-                </el-submenu>
+                </el-submenu> -->
             </el-menu>
         </el-aside>
         <el-container>
