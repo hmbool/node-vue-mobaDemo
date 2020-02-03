@@ -2,6 +2,9 @@ const express = require('express')
 
 const app = express()
 
+app.set('secret', 'asdfghjkl')
+
+
 app.use(require('cors')())
 app.use(express.json())
 // 托管静态文件
