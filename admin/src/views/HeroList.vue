@@ -5,9 +5,9 @@
       <el-table-column prop="_id" label="ID" width="240"></el-table-column>
       <el-table-column prop="name" label="英雄名称"></el-table-column>
       <el-table-column prop="title" label="称号"></el-table-column>
-      <el-table-column prop="avater" label="头像">
+      <el-table-column prop="img" label="头像">
            <template slot-scope="scope">
-               <img :src="scope.row.avater" alt="" style="height:3rem;">
+               <img :src="scope.row.img" alt="" style="height:3rem;">
            </template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
