@@ -26,7 +26,7 @@
       </div>
       <!-- end of nav icons -->
     </div>
-    <m-card icon="cc-menu-circle" title="新闻资讯">
+    <!-- <m-card icon="cc-menu-circle" title="新闻资讯">
       <div class="nav jc-between">
         <div class="nav-item active">
           <div class="nav-link">热门</div>
@@ -56,23 +56,34 @@
           </swiper-slide>
         </swiper>
       </div>
-    </m-card>
+    </m-card> -->
     <m-list-card icon="cc-menu-circle" title="新闻资讯" :categories="newCats">
       <template #items="{category}">
-        <div class="py-2" v-for="(news, i) in category.newsList" :key="i">
-          <span>[{{news.categoryName}}]</span>
-          <span>|</span>
-          <span>{{news.title}}</span>
-          <span>{{news.date}}</span>
+        <div class="py-2 fs-lg d-flex" v-for="(news, i) in category.newsList" :key="i">
+          <span class="text-info">[{{news.categoryName}}]</span>
+          <span class="px-2">|</span>
+          <span class="flex-1 text-dark-1 text-ellipsis pr-2">{{news.title}}</span>
+          <span class="text-grey-1 fs-sm">{{news.createdAt | date}}</span>
         </div>
       </template>
     </m-list-card>
+
+    <m-card icon="cc-menu-circle" title="英雄列表"></m-card>
+    <m-card icon="cc-menu-circle" title="精彩视频"></m-card>
+    <m-card icon="cc-menu-circle" title="图文攻略"></m-card>
   </div>
 </template>
 
 
 <script>
+import dayjs from 'dayjs'
+
 export default {
+  filters: {
+    date(val) {
+      return dayjs(val).format('MM/DD')
+    }
+  },
   data() {
     return {
       swiperOption: {
@@ -81,57 +92,17 @@ export default {
           el: ".pagination-home"
         }
       },
-      newCats: [
-        {
-          name: "热门",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "公告",
-            title: "元宵福利到 峡谷好热闹！",
-            date: "02/06"
-          }))
-        },
-        {
-          name: "热门",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "公告",
-            title: "元宵福利到 峡谷好热闹！",
-            date: "02/06"
-          }))
-        },
-        {
-          name: "热门",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "公告",
-            title: "元宵福利到 峡谷好热闹！",
-            date: "02/06"
-          }))
-        },
-        {
-          name: "热门",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "公告",
-            title: "元宵福利到 峡谷好热闹！",
-            date: "02/06"
-          }))
-        },
-        {
-          name: "热门",
-          newsList: new Array(5).fill(1).map(() => ({
-            categoryName: "公告",
-            title: "元宵福利到 峡谷好热闹！",
-            date: "02/06"
-          }))
-        },
-        // {
-        //   name: "热门",
-        //   newList: new Array(5).fill(1).map(v => ({
-        //     categoryName: "公告",
-        //     title: "元宵福利到 峡谷好热闹！",
-        //     date: "02/06"
-        //   }))
-        // }
-      ]
+      newCats: []
     };
+  },
+  methods: {
+    async fetchNewsCats() {
+      const res = await this.$http.get('news/list')
+      this.newCats = res.data
+    }
+  },
+  created () {
+    this.fetchNewsCats()
   }
 };
 </script>
