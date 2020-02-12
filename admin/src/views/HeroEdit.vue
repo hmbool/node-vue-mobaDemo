@@ -17,9 +17,9 @@
               :action="uploadUrl"
               :headers="getAuthHeaders()"
               :show-file-list="false"
-              :on-success="res => $set(model, 'img', res.url)"
+              :on-success="res => $set(model, 'avater', res.url)"
             >
-              <img v-if="model.img" :src="model.img" class="avatar">
+              <img v-if="model.avater" :src="model.avater" class="avatar">
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
           </el-form-item>
