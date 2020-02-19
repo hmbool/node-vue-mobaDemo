@@ -39,6 +39,13 @@
       "font_class": "checkmore",
       "unicode": "e6a8",
       "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "11410901",
+      "name": "返 回",
+      "font_class": "fanhui",
+      "unicode": "e602",
+      "unicode_decimal": 58882
     }
   ]
 }
